@@ -37,7 +37,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserModal deleteUser (Long id) {
+    public void deleteUser (Long id) {
 
         // Retrieve user (Optional: may or may not be present)
         Optional <UserModal> optionalUser = userRepository.findById(id);
@@ -47,7 +47,6 @@ public class UserService {
             userRepository.deleteById(id);
         }
 
-        return null;
     }
 
     public UserModal updateUser (Long id, UserModal user) {
