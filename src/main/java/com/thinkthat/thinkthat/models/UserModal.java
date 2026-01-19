@@ -6,6 +6,8 @@ import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 // Getters and Setters for modal fields
 @Getter
 @Setter
@@ -18,13 +20,13 @@ import lombok.Setter;
 
 public class UserModal {
 
-    // Primary key fields
+    // Primary key
     @Id
     // Auto generate ID by database sequence
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     // Fields
-    private Long id;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String role;
@@ -33,4 +35,12 @@ public class UserModal {
     // Password hidden when reading/fetching data
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    // Declare relationship
+    // 'mapped': tells this modal which field in the other modal owns the link
+    // 'cascade': actions on user affect its posts
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    // Retrieve posts created by user
+    private List<PostsModal> posts;
+
 }
