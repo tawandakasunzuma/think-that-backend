@@ -28,8 +28,8 @@ public class UserController {
     }
 
     @DeleteMapping("users/{id}")
-    public UserModal deleteUser (@PathVariable Long id) {
-        return userService.deleteUser(id);
+    public void deleteUser (@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 
     @PutMapping("users/{id}")
