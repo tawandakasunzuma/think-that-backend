@@ -50,7 +50,7 @@ public class UserService {
         return null;
     }
 
-    public UserModal updateUser (UserModal user, Long id) {
+    public UserModal updateUser (Long id, UserModal user) {
 
         // Retrieve user by ID
         Optional <UserModal> optionalUser = userRepository.findById(id);

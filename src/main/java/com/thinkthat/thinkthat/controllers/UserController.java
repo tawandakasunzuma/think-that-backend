@@ -2,10 +2,7 @@ package com.thinkthat.thinkthat.controllers;
 
 import com.thinkthat.thinkthat.models.UserModal;
 import com.thinkthat.thinkthat.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // Allows class to handle HTTP requests and responses
 @RestController
@@ -26,7 +23,17 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public UserModal createUser (@PathVariable UserModal user) {
+    public UserModal createUser (@RequestBody UserModal user) {
         return userService.createUser(user);
+    }
+
+    @DeleteMapping("users/{id}")
+    public UserModal deleteUser (@PathVariable Long id) {
+        return userService.deleteUser(id);
+    }
+
+    @PutMapping("users/{id}")
+    public UserModal updateUser (@PathVariable Long id, @RequestBody UserModal user) {
+        return userService.updateUser(id, user);
     }
 }
