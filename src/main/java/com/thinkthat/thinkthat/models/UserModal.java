@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 // Getters and Setters for modal fields
 @Getter
@@ -23,7 +24,7 @@ public class UserModal {
     // Primary key
     @Id
     // Auto generate ID by database sequence
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
 
     // Fields
     private Long userId;

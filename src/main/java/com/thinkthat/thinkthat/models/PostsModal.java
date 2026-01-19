@@ -7,6 +7,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 // Getters and Setters for modal fields
 @Getter
@@ -23,7 +24,7 @@ public class PostsModal {
     // Primary key
     @Id
     // Auto generate ID by database sequence
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
 
     // Fields
     private Long postId;

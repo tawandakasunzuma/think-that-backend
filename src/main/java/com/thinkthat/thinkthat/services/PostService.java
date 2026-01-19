@@ -27,7 +27,7 @@ public class PostService {
         return  postRepository.findById(id).orElse(null);
     }
 
-    public List <PostsModal> getAllPosts (List <PostsModal> posts) {
+    public List <PostsModal> getAllPosts () {
         return postRepository.findAll();
     }
 
