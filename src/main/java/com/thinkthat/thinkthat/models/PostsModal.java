@@ -24,7 +24,7 @@ public class PostsModal {
     // Primary key
     @Id
     // Auto generate ID by database sequence
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     // Fields
     private Long postId;

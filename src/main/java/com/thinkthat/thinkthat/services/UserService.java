@@ -1,9 +1,11 @@
 package com.thinkthat.thinkthat.services;
 
+import com.thinkthat.thinkthat.models.PostsModal;
 import com.thinkthat.thinkthat.models.UserModal;
 import com.thinkthat.thinkthat.respositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 // Marks class as service
@@ -23,6 +25,10 @@ public class UserService {
 
     public UserModal getUserById (Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    public List<UserModal> getAllUsers () {
+        return userRepository.findAll();
     }
 
     public UserModal createUser (UserModal user) {
