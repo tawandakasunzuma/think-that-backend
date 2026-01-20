@@ -1,6 +1,7 @@
 package com.thinkthat.thinkthat.controllers;
 
-import com.thinkthat.thinkthat.models.PostsModal;
+import com.thinkthat.thinkthat.dto.CreatePostRequest;
+import com.thinkthat.thinkthat.dto.PostResponse;
 import com.thinkthat.thinkthat.services.PostService;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,39 +9,44 @@ import java.util.List;
 
 // Allows class to handle HTTP requests and responses
 @RestController
-
+@RequestMapping("/posts") // Base path for all post endpoints
 public class PostsController {
 
     // Declare variable to handle service
     private final PostService postService;
 
     // Inject service so controller can use it
-    public PostsController(PostService postServ) {
-        this.postService = postServ;
+    public PostsController(PostService postService) {
+        this.postService = postService;
     }
 
-    @GetMapping("/posts/{id}")
-    public PostsModal getPostById (@PathVariable Long id) {
+    // Get a post by ID
+    @GetMapping("/{id}")
+    public PostResponse getPostById(@PathVariable Long id) {
         return postService.getPostById(id);
     }
 
-    @GetMapping("/posts")
-    public List<PostsModal> getAllPosts () {
+    // Get all posts
+    @GetMapping
+    public List<PostResponse> getAllPosts() {
         return postService.getAllPosts();
     }
 
-    @PostMapping("/posts")
-    public PostsModal createPost (@RequestBody PostsModal post) {
-        return postService.createPost(post);
+    // Create a new post
+    @PostMapping
+    public PostResponse createPost(@RequestBody CreatePostRequest request) {
+        return postService.createPost(request);
     }
 
-    @PatchMapping("/posts/{id}")
-    public PostsModal updatePost (@RequestBody PostsModal post, @PathVariable Long id) {
-        return postService.updateUser(post, id);
+    // Update an existing post
+    @PatchMapping("/{id}")
+    public PostResponse updatePost(@RequestBody CreatePostRequest request, @PathVariable Long id) {
+        return postService.updatePost(id, request);
     }
 
-    @DeleteMapping("/posts/{id}")
-    public void deletePost (@PathVariable Long id) {
+    // Delete a post by ID
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id) {
         postService.deletePost(id);
     }
 }

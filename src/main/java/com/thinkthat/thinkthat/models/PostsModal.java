@@ -33,10 +33,12 @@ public class PostsModal {
     private LocalDateTime createdAt;
 
     // Declare relationship
-    @ManyToOne
+    // LAZY: object will be fetched when accessed, not immediately
+    // optional: a post cannot exist without a user
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     // Create column called userId, column is foreign key
     // Column cannot be null
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     // Object stored as a user ID
     private UserModal user;
 }
