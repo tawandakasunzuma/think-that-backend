@@ -34,7 +34,7 @@ public class PostsController {
         return postService.createPost(post);
     }
 
-    @PutMapping("/posts/{id}")
+    @PatchMapping("/posts/{id}")
     public PostsModal updatePost (@RequestBody PostsModal post, @PathVariable Long id) {
         return postService.updateUser(post, id);
     }

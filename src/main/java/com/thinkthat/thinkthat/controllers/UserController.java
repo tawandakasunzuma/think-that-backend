@@ -39,7 +39,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PutMapping("users/{id}")
+    @PatchMapping("users/{id}")
     public UserModal updateUser (@PathVariable Long id, @RequestBody UserModal user) {
         return userService.updateUser(id, user);
     }
